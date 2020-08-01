@@ -1,0 +1,89 @@
+---------------------------------------
+| Demultiplexing Algorithm Pseudocode |
+---------------------------------------
+
+Functions:
+
+def reverse_comp(string):
+    '''Takes DNA sequence (string) and returns reverse complement.'''
+    Define dictionary with base:complementary base
+    Iterate through characters in string, swapping key for value
+    Reverse the string
+    Example:
+    • Input: 'ATCG'
+    • Output: 'CGAT'
+    return(rev_comp)
+
+def convert_phred(char):
+    '''Converts ASCII code to decimal quality score'''
+    convert to decimal, subtract 33
+    Example:
+    • Input: #
+    • Output: 2
+    return qscore
+    
+def avg_score(line):
+    '''Takes string of ASCII scores and returns numerical mean"
+    loop through characters in line, using convert_phred() and summing
+    divide by length of line
+    Example:
+    • Input: '#AA<FJJJ'
+    • Output: 31.625
+    return mean quality score
+
+def add_indices(index1, index2):
+    '''Adds pair of indices to end of R1 and R4 headers in the format of "index1-index2" '''    
+    Test example:
+    index1 = TCGCT
+    index2 = GTCCA
+    output header line: @......... TCGCT-GTCCA
+    return ?
+
+def compare_indices(line):
+    '''Takes header line, extracts index 1 and index 2 and sorts reads into correct outfiles '''
+    • this will be used after indices added to R1 and R4 headers
+    • need regex to extract indices and read from R1 and R4 headers
+    • create dictionary to hold indices (will be used for labeling outfiles)
+        • keys are index sequence (e.g. TCTTCGAC)
+        • values are index (e.g. C10)
+    • create dictionary to hold index sequence & reverse complement
+    if indices are dictionary key-value pair:
+        if avg_score(score line) > 20:
+            append record to matching_<index(dict1 value)>_<read>.fastq
+        else:  
+            append record to uknown_<read>.fastq
+    elif index2 is rev comp of other known index:
+        if avg_score(score line) > 20:
+            append record to hopped_<read>.fastq
+        else:  
+            append record to uknown_<read>.fastq
+    else:
+        append to uknown_<read>.fastq
+    Test example:
+    input header line: @K00337:83:HJKJNBBXX:8:1101:1265:1191 1:N:0:1 GTAGCGTA-TACGCTAC
+    outfile: matching_B1_R1.fastq
+    return ? (doesn't return anything, just writes records to outfiles)
+
+
+Main code:
+
+Index pair permutations:
+• Use itertools permutations() to generate list of all possible index pairs
+• Make dictionary with these pairs as keys and initialize with 0 as value
+
+Use itertools to open input fastq files as R1, R2, R3, R4
+    Set record counters to zero for all input files
+    Initialize four lists to hold one record from each input file
+    Loop over corresponding records:
+        • add_indices() from R2 and R3 to header lines in corresponding records in R1 and R4
+        • increment record counters 
+    
+    Loop over records in R1 and R4 
+        • compare_indices(header lines)
+        • increment permutations dictionary values as pairs are encountered
+        • increment counters for each file as records are added
+    
+    Return counts in nicely formatted print statement
+
+
+Close all files
