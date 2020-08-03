@@ -5,7 +5,6 @@ import argparse
 from pathlib import Path
 import gzip
 
-
 def get_args():
         parser = argparse.ArgumentParser(description="A program to find the mean quality score by base position from a fastq file")
         parser.add_argument("-f", "--filename", help="name of input file")
@@ -33,6 +32,7 @@ for pos, sum in enumerate(scores):
     mean = sum/NR
     scores[pos] = mean
     #list 'scores' now holds mean score at each base position
+print(scores)
 
 file_name = Path(file).stem
 
@@ -42,6 +42,8 @@ plt.xlabel("Base Position")
 plt.ylabel("Mean Quality Score")
 plt.title("Mean Quality Score by Base Pair Index")
 plt.savefig(file_name + '_mean_scores.png')
+
+
 
 
 
