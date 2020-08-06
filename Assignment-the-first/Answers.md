@@ -19,11 +19,12 @@
     ![R3 Mean Scores](https://github.com/2020-bgmp/demultiplexing-Natalie-Winans/blob/master/Assignment-the-first/1294_S1_L008_R3_001.fastq_mean_scores.png?raw=true)
     For Read 4 ("reverse")"\
     ![R4 Mean Scores](https://github.com/2020-bgmp/demultiplexing-Natalie-Winans/blob/master/Assignment-the-first/1294_S1_L008_R4_001.fastq_mean_scores.png?raw=true)
-    2. 
-    3. ```
+     
+    ```
     $ zcat 1294_S1_L008_R2_001.fastq.gz | sed -n '2~4p' | grep 'N' | wc -l
     3976613
-    
+    ```
+    ```
     $ zcat 1294_S1_L008_R3_001.fastq.gz | sed -n '2~4p' | grep 'N' | wc -l
     3328051
     ```
