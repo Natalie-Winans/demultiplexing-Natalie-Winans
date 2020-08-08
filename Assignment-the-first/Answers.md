@@ -13,12 +13,22 @@
 2. Per-base NT distribution
     1. For Read 1 ("forward"):\
     ![R1 Mean Scores](https://github.com/2020-bgmp/demultiplexing-Natalie-Winans/blob/master/Assignment-the-first/1294_S1_L008_R1_001.fastq_mean_scores.png?raw=true)
-    2. For Read 2 (Index 1):\
+    For Read 2 (Index 1):\
     ![R2 Mean Scores](https://github.com/2020-bgmp/demultiplexing-Natalie-Winans/blob/master/Assignment-the-first/1294_S1_L008_R2_001.fastq_mean_scores.png?raw=true)
-    3. For Read 3 (Index 2):\
+    For Read 3 (Index 2):\
     ![R3 Mean Scores](https://github.com/2020-bgmp/demultiplexing-Natalie-Winans/blob/master/Assignment-the-first/1294_S1_L008_R3_001.fastq_mean_scores.png?raw=true)
-    4. For Read 4 ("reverse")"\
+    For Read 4 ("reverse")"\
     ![R4 Mean Scores](https://github.com/2020-bgmp/demultiplexing-Natalie-Winans/blob/master/Assignment-the-first/1294_S1_L008_R4_001.fastq_mean_scores.png?raw=true)
+     
+    ```
+    $ zcat 1294_S1_L008_R2_001.fastq.gz | sed -n '2~4p' | grep 'N' | wc -l
+    3976613
+    ```
+    ```
+    $ zcat 1294_S1_L008_R3_001.fastq.gz | sed -n '2~4p' | grep 'N' | wc -l
+    3328051
+    ```
+    
     
 ## Part 2
 1. Define the problem\
