@@ -12,18 +12,18 @@ def get_args():
         parser.add_argument("-r4", "--read4", help='file containing read 4 ("reverse")')
         parser.add_argument("-i", "--index_file", help="name of file containing index data")
         return parser.parse_args() 
-# args = get_args()
-# R1 = args.read1
-# R2 = args.read2
-# R3 = args.read3
-# R4 = args.read4 
-# index_file = args.index_file
+args = get_args()
+R1 = args.read1
+R2 = args.read2
+R3 = args.read3
+R4 = args.read4 
+index_file = args.index_file
 
-R1 = '/Users/nataliewinans/bioinformatics/Bi622/Demux/demultiplexing-Natalie-Winans/TEST-input_FASTQ/test_R1_in.fq.gz'
-R2 = '/Users/nataliewinans/bioinformatics/Bi622/Demux/demultiplexing-Natalie-Winans/TEST-input_FASTQ/test_R2_in.fq.gz'
-R3 = '/Users/nataliewinans/bioinformatics/Bi622/Demux/demultiplexing-Natalie-Winans/TEST-input_FASTQ/test_R3_in.fq.gz'
-R4 = '/Users/nataliewinans/bioinformatics/Bi622/Demux/demultiplexing-Natalie-Winans/TEST-input_FASTQ/test_R4_in.fq.gz'
-index_file = '/Users/nataliewinans/bioinformatics/Bi622/Demux/demultiplexing-Natalie-Winans/indexes.txt'
+# R1 = '/Users/nataliewinans/bioinformatics/Bi622/Demux/demultiplexing-Natalie-Winans/TEST-input_FASTQ/test_R1_in.fq.gz'
+# R2 = '/Users/nataliewinans/bioinformatics/Bi622/Demux/demultiplexing-Natalie-Winans/TEST-input_FASTQ/test_R2_in.fq.gz'
+# R3 = '/Users/nataliewinans/bioinformatics/Bi622/Demux/demultiplexing-Natalie-Winans/TEST-input_FASTQ/test_R3_in.fq.gz'
+# R4 = '/Users/nataliewinans/bioinformatics/Bi622/Demux/demultiplexing-Natalie-Winans/TEST-input_FASTQ/test_R4_in.fq.gz'
+# index_file = '/Users/nataliewinans/bioinformatics/Bi622/Demux/demultiplexing-Natalie-Winans/indexes.txt'
 
 def reverse_comp(string):
     """Takes DNA sequence (string) and returns reverse complement"""
