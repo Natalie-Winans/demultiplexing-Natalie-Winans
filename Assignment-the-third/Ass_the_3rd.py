@@ -5,7 +5,7 @@ import gzip
 import itertools as it
 
 def get_args():
-        parser = argparse.ArgumentParser(description="A program to find the mean quality score by base position from a fastq file")
+        parser = argparse.ArgumentParser(description="A program to filter and sort sequencing data by index")
         parser.add_argument("-r1", "--read1", help='file containing read 1 ("forward")')
         parser.add_argument("-r2", "--read2", help="file containing read 2 (index 1)")
         parser.add_argument("-r3", "--read3", help="file containing read 3 (index 2)")
