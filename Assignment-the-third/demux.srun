@@ -1,0 +1,20 @@
+#!/bin/bash
+#SBATCH --partition=bgmp
+#SBATCH --account=bgmp
+#SBATCH --job-name=demux
+#SBATCH --output=%j_out.txt
+#SBATCH --error=%j_error.txt
+#SBATCH --time=0-12:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=7
+
+conda activate bgmp_py37
+
+usr/bin/time -v ./Ass_the_3rd.py \
+-r1 /projects/bgmp/shared/2017_sequencing/1294_S1_L008_R1_001.fastq.gz \
+-r2 /projects/bgmp/shared/2017_sequencing/1294_S1_L008_R2_001.fastq.gz \
+-r3 /projects/bgmp/shared/2017_sequencing/1294_S1_L008_R3_001.fastq.gz \
+-r4 /projects/bgmp/shared/2017_sequencing/1294_S1_L008_R4_001.fastq.gz \
+-i /projects/bgmp/nwinans/bioinfo/Bi622/demultiplexing-Natalie-Winans/indexes.txt
+
