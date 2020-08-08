@@ -12,18 +12,18 @@ def get_args():
         parser.add_argument("-r4", "--read4", help='file containing read 4 ("reverse")')
         parser.add_argument("-i", "--index_file", help="name of file containing index data")
         return parser.parse_args() 
-args = get_args()
-R1 = args.read1
-R2 = args.read2
-R3 = args.read3
-R4 = args.read4 
-index_file = args.index_file
+# args = get_args()
+# R1 = args.read1
+# R2 = args.read2
+# R3 = args.read3
+# R4 = args.read4 
+# index_file = args.index_file
 
-# R1 = '/Users/nataliewinans/bioinformatics/Bi622/Demux/demultiplexing-Natalie-Winans/TEST-input_FASTQ/test_R1_in.fq.gz'
-# R2 = '/Users/nataliewinans/bioinformatics/Bi622/Demux/demultiplexing-Natalie-Winans/TEST-input_FASTQ/test_R2_in.fq.gz'
-# R3 = '/Users/nataliewinans/bioinformatics/Bi622/Demux/demultiplexing-Natalie-Winans/TEST-input_FASTQ/test_R3_in.fq.gz'
-# R4 = '/Users/nataliewinans/bioinformatics/Bi622/Demux/demultiplexing-Natalie-Winans/TEST-input_FASTQ/test_R4_in.fq.gz'
-# index_file = '/Users/nataliewinans/bioinformatics/Bi622/Demux/demultiplexing-Natalie-Winans/indexes.txt'
+R1 = '/Users/nataliewinans/bioinformatics/Bi622/Demux/demultiplexing-Natalie-Winans/TEST-input_FASTQ/test_R1_in.fq.gz'
+R2 = '/Users/nataliewinans/bioinformatics/Bi622/Demux/demultiplexing-Natalie-Winans/TEST-input_FASTQ/test_R2_in.fq.gz'
+R3 = '/Users/nataliewinans/bioinformatics/Bi622/Demux/demultiplexing-Natalie-Winans/TEST-input_FASTQ/test_R3_in.fq.gz'
+R4 = '/Users/nataliewinans/bioinformatics/Bi622/Demux/demultiplexing-Natalie-Winans/TEST-input_FASTQ/test_R4_in.fq.gz'
+index_file = '/Users/nataliewinans/bioinformatics/Bi622/Demux/demultiplexing-Natalie-Winans/indexes.txt'
 
 def reverse_comp(string):
     """Takes DNA sequence (string) and returns reverse complement"""
@@ -169,12 +169,12 @@ with open('demux_summary.txt', 'w') as fh:
     fh.write("--------------------------\n")
     fh.write("SAMPLE\tINDEX SEQ\tCOUNT\tPERCENT OF MATCHED READS\n")
     for sample in sorted(matched_counts):
-        fh.write(str(sample) + '\t' + get_index_seq(sample) + '\t' + str(matched_counts[sample]) + '\t' + str(matched_counts[sample]/tot_matched_count*100) + '%' + '\n')
+        fh.write(str(sample) + '\t' + get_index_seq(sample) + '\t' + str(matched_counts[sample]) + '\t' + str(round(matched_counts[sample]/tot_matched_count*100, 2)) + '%' + '\n')
     fh.write("\n\nCounts per hopped index pair:\n")
     fh.write("-----------------------------\n")
-    fh.write("INDEX PAIR\tCOUNT\tPERCENT OF HOPPED READS")
+    fh.write("INDEX PAIR\tCOUNT\tPERCENT OF HOPPED READS\n")
     for pair, count in pdict.items():
-        fh.write(str(pair) + '\t' + str(count) + '\t' + str(count/hopped_count*100) + '%' '\n')
+        fh.write(str(pair) + '\t' + str(count) + '\t' + str(round(count/hopped_count*100, 2)) + '%' '\n')
 
 
 
