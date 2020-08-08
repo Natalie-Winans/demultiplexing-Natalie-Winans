@@ -12,18 +12,18 @@ def get_args():
         parser.add_argument("-r4", "--read4", help='file containing read 4 ("reverse")')
         parser.add_argument("-i", "--index_file", help="name of file containing index data")
         return parser.parse_args() 
-args = get_args()
-R1 = args.read1
-R2 = args.read2
-R3 = args.read3
-R4 = args.read4 
-index_file = args.index_file
+# args = get_args()
+# R1 = args.read1
+# R2 = args.read2
+# R3 = args.read3
+# R4 = args.read4 
+# index_file = args.index_file
 
-# R1 = '/Users/nataliewinans/bioinformatics/Bi622/Demux/demultiplexing-Natalie-Winans/TEST-input_FASTQ/test_R1_in.fq.gz'
-# R2 = '/Users/nataliewinans/bioinformatics/Bi622/Demux/demultiplexing-Natalie-Winans/TEST-input_FASTQ/test_R2_in.fq.gz'
-# R3 = '/Users/nataliewinans/bioinformatics/Bi622/Demux/demultiplexing-Natalie-Winans/TEST-input_FASTQ/test_R3_in.fq.gz'
-# R4 = '/Users/nataliewinans/bioinformatics/Bi622/Demux/demultiplexing-Natalie-Winans/TEST-input_FASTQ/test_R4_in.fq.gz'
-# index_file = '/Users/nataliewinans/bioinformatics/Bi622/Demux/demultiplexing-Natalie-Winans/indexes.txt'
+R1 = '/Users/nataliewinans/bioinformatics/Bi622/Demux/demultiplexing-Natalie-Winans/TEST-input_FASTQ/test_R1_in.fq.gz'
+R2 = '/Users/nataliewinans/bioinformatics/Bi622/Demux/demultiplexing-Natalie-Winans/TEST-input_FASTQ/test_R2_in.fq.gz'
+R3 = '/Users/nataliewinans/bioinformatics/Bi622/Demux/demultiplexing-Natalie-Winans/TEST-input_FASTQ/test_R3_in.fq.gz'
+R4 = '/Users/nataliewinans/bioinformatics/Bi622/Demux/demultiplexing-Natalie-Winans/TEST-input_FASTQ/test_R4_in.fq.gz'
+index_file = '/Users/nataliewinans/bioinformatics/Bi622/Demux/demultiplexing-Natalie-Winans/indexes.txt'
 
 def reverse_comp(string):
     """Takes DNA sequence (string) and returns reverse complement"""
@@ -60,7 +60,6 @@ def get_index_seq(sample):
             return seq
 
 index_dict = get_indices(index_file)
-#print(index_dict)
 
 #create dictionary to hold index pair permutations and counts
 poss_pairs = list(it.permutations(index_dict.keys(), 2))
@@ -89,13 +88,13 @@ R4_rec = []
 file_dict_R1 = {}
 file_dict_R4 = {}
 for sample in index_dict.values():
-    file_dict_R1[sample] = open('sample_%s_matched_R1.fastq' % sample, 'w')
-    file_dict_R4[sample] = open('sample_%s_matched_R4.fastq' % sample, 'w')
+    file_dict_R1[sample] = gzip.open('sample_%s_matched_R1.fastq.gz' % sample, 'wb')
+    file_dict_R4[sample] = gzip.open('sample_%s_matched_R4.fastq.gz' % sample, 'wb')
 
-hopped_R1 = open('hopped_R1_out.fastq', 'w')
-hopped_R4 = open('hopped_R4_out.fastq', 'w')
-unknown_R1 = open('unknown_R1_out.fastq', 'w')
-unknown_R4 = open('unknown_R4_out.fastq', 'w')
+hopped_R1 = gzip.open('hopped_R1_out.fastq.gz', 'wb')
+hopped_R4 = gzip.open('hopped_R4_out.fastq.gz', 'wb')
+unknown_R1 = gzip.open('unknown_R1_out.fastq.gz', 'wb')
+unknown_R4 = gzip.open('unknown_R4_out.fastq.gz', 'wb')
 
 #open and loop over 4 input files simultaneously
 with gzip.open(R1,'rt') as R1, gzip.open(R2, 'rt') as R2, gzip.open(R3, 'rt') as R3, gzip.open(R4, 'rt') as R4:
