@@ -4,7 +4,7 @@ This project was completed as part of the Bioinformatics and Genomics Master's P
 
 The objective was to design an algorithm to quality filter and demultiplex short-read sequencing data and assess levels of index hopping. Demultiplexing is required when sequencing libraries are pooled -- the resulting reads must be sorted by their barcodes or indexes. Index hopping can interfere with accurate downstream analyses by causing incorrect or ambiguous read classification.
 
-The program `Demultiplexer.py` can be called from the command line and requires the following arguments:
+The program `Winans-Demultiplexer.py` can be called from the command line and requires the following arguments:
 
 ```
 -r1, --read1        FASTQ file containing read 1 ("forward reads")
